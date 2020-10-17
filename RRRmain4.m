@@ -1,4 +1,11 @@
 %% initial
+p1 = [1,0,1];
+p2 = [sqrt(2)/2, sqrt(2)/2, 1.2];
+
+%% calculations of a line
+
+B = 
+
 q10 = 0; 
 q1f = 2; 
 v1 = 1; 
@@ -16,6 +23,12 @@ v20 = 0;
 v30 = 0;
 delta_t = 0.01;
 n = 0;
+p1 = [1,0,1];
+p2 = [sqrt(2)/2, sqrt(2)/2, 1.2];
+
+
+B = 
+
 
 %% descrete error calculation
 while (floor(delta_t * 10^n) ~= delta_t * 10^n)

@@ -16,7 +16,7 @@ t0 = 0;
 tf = 2;
 
 % 1st joint
-q10 = 8; 
+q10 = 0; 
 q1f = 2;
 v10 = 0; 
 v1f = 0;
@@ -31,29 +31,18 @@ A = [1 t0 t0^2 t0^3 t0^4 t0^5
       0 0 2 6*tf 12*tf^2 20*tf^3];
 c = [q10; v10; acc10; q1f; v1f; acc1f];
 b = A\c;
+
 % assign the results to the coefficients 
 a0 = b(1); a1 = b(2); a2 = b(3); a3 = b(4); a4 = b(5); a5 = b(6);
 
-t = 0:0.1:5;
-qt = a0 + a1.* t + a2.* t.^2 + a3.* t.^3 + a4.* t.^4 + a5.* t.^5;
-vt = 5*a5.*t.^4 + 4*a4.*t.^3 + 3*a3.*t.^2 + 2*a2.*t + a1;
-acct = 20*a5.*t.^3 + 12*a4.*t.^2 + 6*a3.*t + 2*a2;
+t = t0:0.1:tf;
+qt1 = a0 + a1.* t + a2.* t.^2 + a3.* t.^3 + a4.* t.^4 + a5.* t.^5;
+vt1 = 5*a5.*t.^4 + 4*a4.*t.^3 + 3*a3.*t.^2 + 2*a2.*t + a1;
+acct1 = 20*a5.*t.^3 + 12*a4.*t.^2 + 6*a3.*t + 2*a2;
 
-figure
- plot(t,qt,'g-')
- title('position vs time')
- grid on
- figure
- plot(t,vt,'b-')
- title('velocity vs time')
- grid on
- figure
- plot(t,acct,'k-')
- title('acceleration vs time')
- grid on
  
 % 2st joint
-q10 = 8; 
+q10 = 0; 
 q1f = 3;
 v10 = 0; 
 v1f = 0;
@@ -71,26 +60,15 @@ b = A\c;
 % assign the results to the coefficients 
 a0 = b(1); a1 = b(2); a2 = b(3); a3 = b(4); a4 = b(5); a5 = b(6);
 
-t = 0:0.1:5;
-qt = a0 + a1.* t + a2.* t.^2 + a3.* t.^3 + a4.* t.^4 + a5.* t.^5;
-vt = 5*a5.*t.^4 + 4*a4.*t.^3 + 3*a3.*t.^2 + 2*a2.*t + a1;
-acct = 20*a5.*t.^3 + 12*a4.*t.^2 + 6*a3.*t + 2*a2;
+t = t0:0.1:tf;
+qt2 = a0 + a1.* t + a2.* t.^2 + a3.* t.^3 + a4.* t.^4 + a5.* t.^5;
+vt2 = 5*a5.*t.^4 + 4*a4.*t.^3 + 3*a3.*t.^2 + 2*a2.*t + a1;
+acct2 = 20*a5.*t.^3 + 12*a4.*t.^2 + 6*a3.*t + 2*a2;
 
-figure
- plot(t,qt,'g-')
- title('position vs time')
- grid on
- figure
- plot(t,vt,'b-')
- title('velocity vs time')
- grid on
- figure
- plot(t,acct,'k-')
- title('acceleration vs time')
- grid on
+
  
 % 3rd joint
-q10 = 8; 
+q10 = 0; 
 q1f = 4;
 v10 = 0; 
 v1f = 0;
@@ -108,20 +86,37 @@ b = A\c;
 % assign the results to the coefficients 
 a0 = b(1); a1 = b(2); a2 = b(3); a3 = b(4); a4 = b(5); a5 = b(6);
 
-t = 0:0.1:5;
-qt = a0 + a1.* t + a2.* t.^2 + a3.* t.^3 + a4.* t.^4 + a5.* t.^5;
-vt = 5*a5.*t.^4 + 4*a4.*t.^3 + 3*a3.*t.^2 + 2*a2.*t + a1;
-acct = 20*a5.*t.^3 + 12*a4.*t.^2 + 6*a3.*t + 2*a2;
+t = t0:0.1:tf;
+qt3 = a0 + a1.* t + a2.* t.^2 + a3.* t.^3 + a4.* t.^4 + a5.* t.^5;
+vt3 = 5*a5.*t.^4 + 4*a4.*t.^3 + 3*a3.*t.^2 + 2*a2.*t + a1;
+acct3 = 20*a5.*t.^3 + 12*a4.*t.^2 + 6*a3.*t + 2*a2;
+ 
+figure
+plot(t,qt1,'r-')
+hold on
+plot(t,qt2,'b-')
+hold on
+plot(t,qt3,'p-')
+title('position vs time')
+legend('joint_1', 'joint_2', 'joint_3')
+grid on
 
 figure
- plot(t,qt,'g-')
- title('position vs time')
- grid on
- figure
- plot(t,vt,'b-')
- title('velocity vs time')
- grid on
- figure
- plot(t,acct,'k-')
- title('acceleration vs time')
- grid on
+plot(t,vt1,'r-')
+hold on
+plot(t,vt2,'b-')
+hold on
+plot(t,vt3,'p-')
+title('velocity vs time')
+legend('joint_1', 'joint_2', 'joint_3')
+grid on
+
+figure
+plot(t,acct1,'r-')
+hold on
+plot(t,acct2,'b-')
+hold on
+plot(t,acct3,'p-')
+title('acceleration vs time')
+legend('joint_1', 'joint_2', 'joint_3')
+grid on

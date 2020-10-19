@@ -63,14 +63,6 @@ else
 end
 
 %% simultationus motion calculation
-if t2f_new > t1f_new
-    tf_new = t2f_new;
-    ta_new = t2a_new;
-else
-    tf_new = t1f_new;
-    ta_new = t1a_new;
-end
-
 if (t3f_new >= t1f_new) && (t3f_new >= t2f_new)
     tf_new = t3f_new;
     ta_new = t3a_new;
